@@ -1,18 +1,49 @@
-[gd_scene load_steps=3 format=3 uid="uid://dsyfep1odrxje"]
+[gd_scene load_steps=6 format=3 uid="uid://dsyfep1odrxje"]
 
-[ext_resource type="PackedScene" path="res://Scenes/Ground.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://bcl2ut8knpweo" path="res://scenes/Ground.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://c8uq57r4b14cb" path="res://scenes/Player.tscn" id="2_5qtnk"]
 
+[sub_resource type="Gradient" id="Gradient_3g41f"]
+interpolation_mode = 1
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mkkfk"]
+gradient = SubResource("Gradient_3g41f")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6v00y"]
+size = Vector2(20, 497)
+
 [node name="Root" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1156.0
+offset_bottom = 655.0
+texture = SubResource("GradientTexture1D_mkkfk")
 
 [node name="Ground" parent="." instance=ExtResource("1")]
 position = Vector2(507.708, 363.86)
 
 [node name="Ground2" parent="." instance=ExtResource("1")]
-position = Vector2(789.149, 294.054)
+position = Vector2(834, 294.054)
+
+[node name="Ground4" parent="." instance=ExtResource("1")]
+position = Vector2(1160, 222)
 
 [node name="Ground3" parent="." instance=ExtResource("1")]
-position = Vector2(225.95, 294.562)
+position = Vector2(179, 295)
 
 [node name="Player" parent="." instance=ExtResource("2_5qtnk")]
 position = Vector2(113, 140)
+
+[node name="left_wall" type="StaticBody2D" parent="."]
+position = Vector2(-9, 199)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="left_wall"]
+position = Vector2(0, 47.5)
+shape = SubResource("RectangleShape2D_6v00y")
+
+[node name="right_wall" type="StaticBody2D" parent="."]
+position = Vector2(1160, 200)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="right_wall"]
+position = Vector2(0, 47.5)
+shape = SubResource("RectangleShape2D_6v00y")

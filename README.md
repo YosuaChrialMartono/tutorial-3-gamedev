@@ -45,3 +45,19 @@
     ![alt text](image-1.png)
 
     Saya juga mengubah texture sprite ketika ia sedang crouching dengan mengakses texture dari sprite dan load texture baru ketika crouch sedang aktif.
+
+-   **Polishing:**
+
+    -   Animation
+        References:
+        https://www.youtube.com/watch?v=-f1bHR0iiEY
+
+        Menggunakan referensi ini saya membuat animasi untuk beberapa aksi dalam game. Berjalan, berlari, melompat, jatuh, dan idle. Dalam game ini saya juga menggunakan sprite adventurer dari asset folder untuk animasi.
+
+    -   Facing
+
+        Saya mengubah arah hadap dari player dengan menggunakan direction dari input user.
+
+    -   Background
+
+        Saya menambahkan simple background menggunakan TextureRect untuk mengganti background kosong yang digunakan di awal.

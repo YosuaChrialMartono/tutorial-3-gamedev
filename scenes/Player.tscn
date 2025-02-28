@@ -1,17 +1,88 @@
-[gd_scene load_steps=4 format=3 uid="uid://c8uq57r4b14cb"]
+[gd_scene load_steps=11 format=3 uid="uid://c8uq57r4b14cb"]
 
 [ext_resource type="Script" path="res://scenes/Player.gd" id="1_4h3lw"]
+[ext_resource type="Texture2D" uid="uid://c1p5g33wabvfp" path="res://assets/kenney_platformercharacters/PNG/Adventurer/Poses/adventurer_fall.png" id="2_6ppyj"]
+[ext_resource type="Texture2D" uid="uid://d1ujqe7airurj" path="res://assets/kenney_platformercharacters/PNG/Adventurer/Poses/adventurer_duck.png" id="2_bukw8"]
 [ext_resource type="Texture2D" uid="uid://ofsbv6coxbmq" path="res://assets/kenney_platformercharacters/PNG/Adventurer/Poses/adventurer_stand.png" id="2_l6j5n"]
+[ext_resource type="Texture2D" uid="uid://3h4607syxcrm" path="res://assets/kenney_platformercharacters/PNG/Adventurer/Poses/adventurer_jump.png" id="4_xcyqa"]
+[ext_resource type="Texture2D" uid="uid://utdlp85p5e17" path="res://assets/kenney_platformercharacters/PNG/Adventurer/Poses/adventurer_kick.png" id="5_icp6w"]
+[ext_resource type="Texture2D" uid="uid://cademvw3gv8rr" path="res://assets/kenney_platformercharacters/PNG/Adventurer/Poses/adventurer_walk1.png" id="5_yraqv"]
+[ext_resource type="Texture2D" uid="uid://dmn8133tt40x1" path="res://assets/kenney_platformercharacters/PNG/Adventurer/Poses/adventurer_walk2.png" id="6_bi53g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vwmal"]
 size = Vector2(86, 105)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_ws4mc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_bukw8")
+}],
+"loop": true,
+"name": &"crouch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6ppyj")
+}],
+"loop": true,
+"name": &"falling",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_l6j5n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_icp6w")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_xcyqa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_6ppyj")
+}],
+"loop": false,
+"name": &"jump",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_yraqv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bi53g")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_yraqv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bi53g")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_4h3lw")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_l6j5n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2, -0.5)
 shape = SubResource("RectangleShape2D_vwmal")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ws4mc")
+animation = &"falling"
+autoplay = "idle"
