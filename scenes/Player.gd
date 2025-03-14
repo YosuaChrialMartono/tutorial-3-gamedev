@@ -20,6 +20,8 @@ var is_running = false
 # Animation Implementation
 @onready var animated_sprite = $AnimatedSprite2D
 
+@export var sceneName: String = "Main"
+
 func _physics_process(delta):
 	velocity.y += delta * gravity
 
@@ -84,3 +86,12 @@ func _physics_process(delta):
 
 	# "move_and_slide" already takes delta time into account.
 	move_and_slide()
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.
+
+
+func _on_lowerbound_body_entered(body: Node2D) -> void:
+	if body.get_name() == "Player":
+		get_tree().change_scene_to_file(str("res://scenes/" + sceneName + ".tscn"))

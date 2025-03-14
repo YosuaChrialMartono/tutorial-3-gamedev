@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://c73cg7nf6ha1w"]
+
+[ext_resource type="Texture2D" uid="uid://d3eybtxrg0bt0" path="res://assets/flagGreen1.png" id="1_2hb8f"]
+[ext_resource type="Script" path="res://scenes/win_flag.gd" id="1_u0ks3"]
+[ext_resource type="AudioStream" uid="uid://de0xp3yx4u1yw" path="res://assets/270319__littlerobotsoundfactory__jingle_win_01.wav" id="3_ugykv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nofu0"]
+size = Vector2(121, 128)
+
+[node name="WinFlag" type="Area2D"]
+script = ExtResource("1_u0ks3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4.5, -1)
+shape = SubResource("RectangleShape2D_nofu0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_2hb8f")
+
+[node name="win" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ugykv")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

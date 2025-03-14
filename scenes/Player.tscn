@@ -1,22 +1,52 @@
-[gd_scene load_steps=11 format=3 uid="uid://c8uq57r4b14cb"]
+[gd_scene load_steps=14 format=3 uid="uid://c8uq57r4b14cb"]
 
 [ext_resource type="Script" path="res://scenes/Player.gd" id="1_4h3lw"]
-[ext_resource type="Texture2D" uid="uid://c1p5g33wabvfp" path="res://assets/kenney_platformercharacters/PNG/Adventurer/Poses/adventurer_fall.png" id="2_6ppyj"]
-[ext_resource type="Texture2D" uid="uid://d1ujqe7airurj" path="res://assets/kenney_platformercharacters/PNG/Adventurer/Poses/adventurer_duck.png" id="2_bukw8"]
-[ext_resource type="Texture2D" uid="uid://ofsbv6coxbmq" path="res://assets/kenney_platformercharacters/PNG/Adventurer/Poses/adventurer_stand.png" id="2_l6j5n"]
-[ext_resource type="Texture2D" uid="uid://3h4607syxcrm" path="res://assets/kenney_platformercharacters/PNG/Adventurer/Poses/adventurer_jump.png" id="4_xcyqa"]
-[ext_resource type="Texture2D" uid="uid://utdlp85p5e17" path="res://assets/kenney_platformercharacters/PNG/Adventurer/Poses/adventurer_kick.png" id="5_icp6w"]
-[ext_resource type="Texture2D" uid="uid://cademvw3gv8rr" path="res://assets/kenney_platformercharacters/PNG/Adventurer/Poses/adventurer_walk1.png" id="5_yraqv"]
-[ext_resource type="Texture2D" uid="uid://dmn8133tt40x1" path="res://assets/kenney_platformercharacters/PNG/Adventurer/Poses/adventurer_walk2.png" id="6_bi53g"]
+[ext_resource type="Texture2D" uid="uid://bbd8s66xonl4r" path="res://assets/player_tilesheet.png" id="2_at32k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vwmal"]
 size = Vector2(86, 105)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jskul"]
+atlas = ExtResource("2_at32k")
+region = Rect2(240, 0, 80, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6yn0"]
+atlas = ExtResource("2_at32k")
+region = Rect2(320, 0, 80, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eknuj"]
+atlas = ExtResource("2_at32k")
+region = Rect2(0, 0, 80, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xh01h"]
+atlas = ExtResource("2_at32k")
+region = Rect2(400, 220, 80, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_exnxf"]
+atlas = ExtResource("2_at32k")
+region = Rect2(80, 0, 80, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p4vx2"]
+atlas = ExtResource("2_at32k")
+region = Rect2(0, 110, 80, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5t7qt"]
+atlas = ExtResource("2_at32k")
+region = Rect2(80, 110, 80, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xfj4j"]
+atlas = ExtResource("2_at32k")
+region = Rect2(0, 110, 80, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cpala"]
+atlas = ExtResource("2_at32k")
+region = Rect2(80, 110, 80, 110)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ws4mc"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_bukw8")
+"texture": SubResource("AtlasTexture_jskul")
 }],
 "loop": true,
 "name": &"crouch",
@@ -24,7 +54,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_6ppyj")
+"texture": SubResource("AtlasTexture_o6yn0")
 }],
 "loop": true,
 "name": &"falling",
@@ -32,10 +62,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_l6j5n")
+"texture": SubResource("AtlasTexture_eknuj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_icp6w")
+"texture": SubResource("AtlasTexture_xh01h")
 }],
 "loop": true,
 "name": &"idle",
@@ -43,10 +73,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_xcyqa")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_6ppyj")
+"texture": SubResource("AtlasTexture_exnxf")
 }],
 "loop": false,
 "name": &"jump",
@@ -54,10 +81,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_yraqv")
+"texture": SubResource("AtlasTexture_p4vx2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_bi53g")
+"texture": SubResource("AtlasTexture_5t7qt")
 }],
 "loop": true,
 "name": &"run",
@@ -65,10 +92,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_yraqv")
+"texture": SubResource("AtlasTexture_xfj4j")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_bi53g")
+"texture": SubResource("AtlasTexture_cpala")
 }],
 "loop": true,
 "name": &"walk",
@@ -84,5 +111,6 @@ shape = SubResource("RectangleShape2D_vwmal")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ws4mc")
-animation = &"falling"
+animation = &"walk"
 autoplay = "idle"
+frame_progress = 0.332654

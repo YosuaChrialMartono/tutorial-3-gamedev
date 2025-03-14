@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://c673rk5ff1bau"]
+
+[ext_resource type="Script" path="res://scenes/win_flag.gd" id="1_prgaq"]
+[ext_resource type="Texture2D" uid="uid://dnl0d0m8ajnpy" path="res://assets/coinGold.png" id="2_lrh4w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nofu0"]
+size = Vector2(126, 128)
+
+[node name="Coin" type="Area2D"]
+script = ExtResource("1_prgaq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -1)
+shape = SubResource("RectangleShape2D_nofu0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_lrh4w")
